@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TCL TV Cast Receiver</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body class="tv-body">
+    <video id="screenVideo" autoplay playsinline></video>
+    <div class="tv-overlay" id="tvOverlay">
+      <p class="eyebrow">Android TV receiver</p>
+      <h1 id="receiverName">TCL Google TV</h1>
+      <p id="receiverStatus">Waiting for Mac sender...</p>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/receiver.js" type="module"></script>
+  </body>
+</html>
+

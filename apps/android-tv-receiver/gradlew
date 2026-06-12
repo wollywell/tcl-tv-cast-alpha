@@ -1,0 +1,22 @@
+#!/usr/bin/env sh
+set -eu
+
+APP_HOME=$(CDPATH= cd -- "$(dirname -- "$0")" && pwd)
+GRADLE_VERSION="8.9"
+GRADLE_BASE="$APP_HOME/.gradle/wrapper/dists"
+GRADLE_DIR="$GRADLE_BASE/gradle-$GRADLE_VERSION"
+GRADLE_ZIP="$GRADLE_BASE/gradle-$GRADLE_VERSION-bin.zip"
+GRADLE_BIN="$GRADLE_DIR/bin/gradle"
+
+if [ ! -x "$GRADLE_BIN" ]; then
+  mkdir -p "$GRADLE_BASE"
+  if [ ! -f "$GRADLE_ZIP" ]; then
+    echo "Downloading Gradle $GRADLE_VERSION..."
+    curl -fL "https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip" -o "$GRADLE_ZIP"
+  fi
+  rm -rf "$GRADLE_DIR"
+  unzip -q "$GRADLE_ZIP" -d "$GRADLE_BASE"
+fi
+
+exec "$GRADLE_BIN" "$@"
+

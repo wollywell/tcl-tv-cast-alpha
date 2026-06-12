@@ -1,0 +1,10 @@
+node_modules/
+*.log
+.DS_Store
+apps/android-tv-receiver/.gradle/
+apps/android-tv-receiver/app/build/
+apps/android-tv-receiver/.gradle-wrapper-cache/
+.tools/
+outputs/
+outputs/desktop/
+dist/

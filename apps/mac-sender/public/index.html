@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>TCL TV Cast</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <main class="app-shell">
+      <section class="panel header-panel">
+        <div>
+          <p class="eyebrow">Mac sender</p>
+          <h1>TCL TV Cast</h1>
+          <p class="muted">Stream this Mac screen to a TCL Google TV / Android TV on the same Wi-Fi network.</p>
+        </div>
+        <div class="status-pill" id="serverAddress">Starting...</div>
+      </section>
+
+      <section class="grid">
+        <div class="panel">
+          <div class="section-title">
+            <h2>TVs</h2>
+            <button class="icon-button" id="refreshButton" title="Refresh">↻</button>
+          </div>
+          <div id="receiverList" class="receiver-list empty">No TV receiver connected yet.</div>
+          <div class="quality-grid">
+            <label>
+              Resolution
+              <select id="resolutionSelect">
+                <option value="1280x720">720p</option>
+                <option value="1920x1080" selected>1080p</option>
+              </select>
+            </label>
+            <label>
+              Frame rate
+              <select id="frameRateSelect">
+                <option value="30" selected>30 fps</option>
+                <option value="60">60 fps</option>
+              </select>
+            </label>
+            <label class="checkbox-label">
+              <input id="audioToggle" type="checkbox">
+              Include audio
+            </label>
+          </div>
+          <div class="button-row">
+            <button id="startButton" disabled>Start sharing</button>
+            <button id="stopButton" class="secondary" disabled>Stop</button>
+          </div>
+          <p class="muted small" id="shareStatus">Install or open the receiver on the TV first.</p>
+        </div>
+
+        <div class="panel">
+          <h2>Install on TCL TV</h2>
+          <div class="setup-status" id="setupStatus">Checking install readiness...</div>
+          <div class="url-box">
+            <span>TV Receiver URL</span>
+            <a id="receiverUrlLink" href="/tv">Starting...</a>
+            <span>Short TV APK URL</span>
+            <a id="shortApkUrlLink" href="/apk">Starting...</a>
+            <small><a id="apkUrlLink" href="/receiver.apk">Full APK URL</a></small>
+          </div>
+          <label>
+            TV ADB install target
+            <input id="tvHostInput" placeholder="192.168.1.77 or 192.168.1.77:5555" autocomplete="off">
+          </label>
+          <label>
+            Mac Wi-Fi IP
+            <select id="macHostSelect"></select>
+          </label>
+          <div class="button-row">
+            <button id="scanButton" class="secondary">Scan Wi-Fi for TVs</button>
+            <button id="adbDevicesButton" class="secondary">Show ADB devices</button>
+            <button id="setupRefreshButton" class="secondary">Check setup</button>
+            <button id="adbToolsButton" class="secondary">Install ADB tools</button>
+            <button id="androidSdkButton" class="secondary">Install Android SDK</button>
+            <button id="buildButton" class="secondary">Build receiver APK</button>
+            <a id="downloadApkLink" class="button-link secondary" href="/receiver.apk" download>Download APK</a>
+          </div>
+          <div id="candidateList" class="candidate-list empty">No scan run yet.</div>
+          <div class="pair-grid">
+            <label>
+              Pairing target
+              <input id="pairTargetInput" placeholder="192.168.1.77:37123" autocomplete="off">
+            </label>
+            <label>
+              Pairing code
+              <input id="pairCodeInput" placeholder="123456" autocomplete="off" inputmode="numeric">
+            </label>
+          </div>
+          <button id="pairButton" class="secondary">Pair wireless debugging</button>
+          <div class="button-row">
+            <button id="installButton">Install and launch receiver</button>
+            <button id="launchButton" class="secondary">Launch receiver only</button>
+          </div>
+          <pre id="installLog" class="log">Enable ADB debugging / Wireless debugging on the TV, then enter its IP.</pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/sender.js" type="module"></script>
+  </body>
+</html>
