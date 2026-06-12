@@ -8,7 +8,6 @@ Alpha open-source prototype for streaming a MacBook screen to a TCL Google TV / 
 
 - Full Russian setup guide: [docs/INSTALL_FULL_RU.md](docs/INSTALL_FULL_RU.md)
 - Short Russian setup guide: [docs/QUICKSTART_RU.md](docs/QUICKSTART_RU.md)
-- Short Russian setup guide, profanity edition: [docs/QUICKSTART_RU_UNCENSORED.md](docs/QUICKSTART_RU_UNCENSORED.md)
 
 ## Alpha Scope
 
